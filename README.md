@@ -1,2 +1,30 @@
-# Programa-de-automa-o-de-boletos
-Fiz um programa em python para a automação de boletos, e colocalos em uma planilha.
+# Programa-de-automação-de-boletos
+
+import PySimpleGUI as sg
+
+sg.theme('reddit')
+
+janela_principal = [
+    [sg.Text('E-mail'), sg.Input(key='email')],
+    [sg.Text('Senha'), sg.Input(key='senha', password_char='*')],
+    [sg.FolderBrowse('Escolher pasta Anexos', target='input_anexos'), sg.Input(key='input_anexos')],
+    [sg.FolderBrowse('Escolher pasta Planilha', target='input_planilha'), sg.Input(key='input_planilha')],
+    [sg.Button('Salvar')]
+]
+
+janela = sg.Window('Principal', layout=janela_principal)
+
+while True:
+    event, values = janela.read()
+    if event == sg.WIN_CLOSED:
+        break
+    elif event == 'Salvar':
+        email = values['email']
+        senha = values['senha']
+        caminho_pasta_anexos = values['input_anexos']
+        caminho_pasta_planilha = values['input_planilha']
+        
+
+janela.close()
+
+
